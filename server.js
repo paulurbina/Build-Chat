@@ -1,5 +1,6 @@
 const mongo = require('mongodb').MongoClient;
 
+
 const client = require('socket.io').listen(5050).sockets;
 
 // Connect  db mongo
@@ -8,7 +9,7 @@ mongo.connect('mongodb://chat-socket-paul:buildchat2019@ds253017.mlab.com:53017/
         console.log('>>Connected Mongodb..');
 
         // Connected socket.io
-        client.on('connection', () => {
+        client.on('connection', (socket) => {
             let chat = db.collection('chats');
 
             //create functo send status
