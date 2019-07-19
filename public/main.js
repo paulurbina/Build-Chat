@@ -1,6 +1,6 @@
 (function () {
         var element = (id) => {
-            return document.getElementById(id)
+            return document.getElementById(id);
         }
 
         //get elementts
@@ -33,4 +33,4 @@
             
             socket.on('output')
         }
-})();   
+})();
