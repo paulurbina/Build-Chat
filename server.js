@@ -2,9 +2,10 @@ const mongo = require('mongodb').MongoClient;
 
 
 const client = require('socket.io').listen(5050).sockets;
+const urlMlab = 'mongodb://chat-socket-paul:buildchat2019@ds253017.mlab.com:53017/build-chat-socket-io';
 
 // Connect  db mongo
-mongo.connect('mongodb://chat-socket-paul:buildchat2019@ds253017.mlab.com:53017/build-chat-socket-io', { useNewUrlParser: true})
+mongo.connect(urlMlab, { useNewUrlParser: true})
     .then(db => {
         console.log('>>Connected Mongodb..');
 
