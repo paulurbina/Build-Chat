@@ -31,6 +31,7 @@
         if(socket != undefined) {
             console.log('>>Connected Socket.io...');
 
+            // handle output
             socket.on('output', (data) => {
                 console.log(data);
                 if(data.lenght) {
@@ -42,6 +43,29 @@
                         messages.appendChild(message);
                         messages.insertBefore(message, messages.firstChild);
                     }
+                }
+            });
+
+            //get status from server
+            socket.on('status', (data) => {
+
+                //get message status
+                setStatus((typeof data === 'object') ? data.message : data);
+
+                // if status is clear , clear text
+                if(data.clear) {
+                    textarea.value = '';
+                }
+            });
+
+            // handle input
+            textarea.addEventListener('keydown', (event) => {
+                if(event.which === 13 && event.shiftKey == false) {
+                    socket.emit('input', {
+                        name: username.value,
+                        message: textarea.value
+                    });
+                    event.preventDefault();
                 }
             });
         }
