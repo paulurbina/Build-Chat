@@ -31,6 +31,5 @@
         if(socket != undefined) {
             console.log('connected socket.io');
             
-            socket.on('output')
         }
 })();

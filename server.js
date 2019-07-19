@@ -3,15 +3,15 @@ const mongoClient = require('mongodb').MongoClient;
 
 const client = require('socket.io').listen(5050).sockets;
 const urlMlab = 'mongodb://userchat:buidlchat2019@ds253017.mlab.com:53017/buildchatnode';
-const urlNative = 'mongodb://127.0.0.1/mongochat';
+const urlNative = 'mongodb://127.0.0.1:27017/mongochat';
 //suport promise
 // mongoose.Promise = global.Promise;
 
 // Connect  db mongo
-mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err ,db) {
+mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err, db) {
     if(err) {
         throw err;
-    } else {
+    }
         console.log('>> Connected db...');
 
         client.on('connection', (socket) => {
@@ -66,6 +66,6 @@ mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err ,db) {
                 });
             });
         });
-    }
+    
 });
 
