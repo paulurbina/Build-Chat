@@ -68,5 +68,15 @@
                     event.preventDefault();
                 }
             });
+
+            // handle clear button
+            clearBtn.addEventListener('click', () => {
+                socket.emit('clear');
+            });
+
+            // clear message
+            socket.on('cleared', () => {
+                messages.textContent = '';
+            });
         }
 })();
