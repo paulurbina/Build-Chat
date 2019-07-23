@@ -6,7 +6,7 @@ const urlMlab = 'mongodb://userchat:buidlchat2019@ds253017.mlab.com:53017/buildc
 const urlNative = 'mongodb://127.0.0.1:27017';  
 const dbName = 'mongochat';
 //suport promise
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 
 // Connect  db mongo
 mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err, client) {
@@ -27,7 +27,7 @@ mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err, client) {
             }
 
             //get chat mongodb from collections
-            chat.find().limit(100).sort({ _id: -1 }).toArray((err, res) => {
+            chat.find().limit(100).sort({ _id: 1 }).toArray((err, res) => {
                 if(err) {
                     throw err
                 } else {

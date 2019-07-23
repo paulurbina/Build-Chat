@@ -34,7 +34,7 @@
             // handle output
             socket.on('output', (data) => {
                 console.log(data);
-                if(data.lenght) {
+                if(data.length) {
                     for(var x=0; x < data.lenght; x++) {
                         // build out message div
                         var message = document.createElement('div');
