@@ -3,10 +3,10 @@ const mongoClient = require('mongodb').MongoClient;
 
 const client = require('socket.io').listen(5050).sockets;
 const urlMlab = 'mongodb://userchat:buidlchat2019@ds253017.mlab.com:53017/buildchatnode';
-const urlNative = 'mongodb://127.0.0.1:27017';
+const urlNative = 'mongodb://127.0.0.1:27017';  
 const dbName = 'mongochat';
 //suport promise
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 // Connect  db mongo
 mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err, client) {
