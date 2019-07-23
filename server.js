@@ -1,7 +1,7 @@
 const mongoClient = require('mongodb').MongoClient;
 // const mongoose = require('mongoose');
 
-const client = require('socket.io').listen(5050).sockets;
+const clientSocket = require('socket.io').listen(3000).sockets;
 const urlMlab = 'mongodb://userchat:buidlchat2019@ds253017.mlab.com:53017/buildchatnode';
 const urlNative = 'mongodb://127.0.0.1:27017';  
 const dbName = 'mongochat';
@@ -17,8 +17,8 @@ mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err, client) {
         // add proyect name
         const db = client.db(dbName);
 
-
-        client.on('connection', (socket) => {
+        //change client a clientSocket
+        clientSocket.on('connection', (socket) => {
             let chat = db.collection('chats');
 
             //create function  send status
@@ -50,7 +50,7 @@ mongoClient.connect(urlNative, { useNewUrlParser:true }, function(err, client) {
                         name: name,
                         message: message
                     }, () => {
-                        client.emit('output', [data]);
+                        clientSocket.emit('output', [data]);
 
                         // send status object
                         sendStatus({
