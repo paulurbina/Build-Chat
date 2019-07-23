@@ -35,7 +35,7 @@
             socket.on('output', (data) => {
                 console.log(data);
                 if(data.length) {
-                    for(var x=0; x < data.lenght; x++) {
+                    for(var x=0; x < data.length; x++) {
                         // build out message div
                         var message = document.createElement('div');
                         message.setAttribute('class', 'chat-message');
